@@ -1,0 +1,30 @@
+{% extends 'layouts/default.html' %}
+
+{% block css %}
+	<style type="text/css">
+	.login{
+		margin-top: 5%;
+	}
+
+	.infografia{
+		border-radius: 5px;
+		padding-bottom: 2em;	
+	}
+
+	.fb-button{
+		background-color: rgb(59, 89, 152);
+		color: white !important;
+	}
+	</style>
+{% endblock %}
+
+{% block contenido %}
+	
+	<div class="row login">
+	  	<div class="col-xs-12 col-md-6 col-lg-6 col-md-offset-3 col-lg-offset-3 color-negro infografia bg-white">
+	  		<p><h1>{{ mensaje }}</h1></p>	
+	  		<a href="{{url}}">{{link}}</a>		
+	  	</div>	  
+  	</div>
+	 
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'layouts/default.html' %}
+
+{% block css %}
+	<style type="text/css">
+		.login{
+			background-color: rgb(237, 237, 237);
+			padding-top: 2em;
+			padding-bottom: 2em;
+		}
+	</style>
+{% endblock %}
+
+{% block contenido %}
+	
+	<div class="row">
+	  	<div class="col-xs-12 col-md-6 col-lg-6 col-md-offset-3 col-lg-offset-3 login">
+	  		<form action="/login/crear/usuario/" method="post">{% csrf_token %}
+           
+			  <div class="form-group">
+			    <label for="exampleInputEmail1">Nombre de Usuario</label>
+			    <input type="text" name="usuario" class="form-control" id="exampleInputEmail1" placeholder="Ingrese su Usuario" required >
+			  </div>
+			  <div class="form-group">
+			    <label for="exampleInputPassword1">Password</label>
+			    <input type="password" ng-minlength=5 name="password" class="form-control" id="exampleInputPassword1" placeholder="Ingrese su Password" required >
+			  </div>
+			  
+			  <button type="submit" class="btn btn-success">Aceptar</button>
+			</form>
+	  	</div>
+	  
+  	</div>
+	 
+{% endblock %}

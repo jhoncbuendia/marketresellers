@@ -1,0 +1,164 @@
+
+	<!DOCTYPE html>
+	<html lang="en">
+	  <head>
+	    <meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+	    <title>Shoe Lovers</title>
+
+	    <!-- Bootstrap -->
+	    <link href="{{ STATIC_URL }}assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+	    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	    <!--[if lt IE 9]>
+	      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	    <![endif]-->
+	    <style type="text/css">
+	    ul{
+	    	list-style: none;
+	    }
+	    .row{margin-right: 0px !important;
+	    }
+	   	
+	   	.btn{
+	   		border-radius: 0px;
+	   	}
+	    #logo{
+	    	font-size: 18px;
+	    	font-weight: bold;
+	    }
+
+	    #categorias{
+	    	
+	    	padding-top: 0.5em;
+	    	padding-bottom: 0.5em;
+	    	font-size: 22px;
+	    	margin-bottom: 1em;
+	    	color:#959595;
+	    	border-top: 1px solid #D2D2D2;
+	   	 	border-bottom:  1px solid #D2D2D2;
+	    }
+
+	    #categorias div p{
+	    	
+	    	cursor: pointer;
+	    	color: #333;
+	    	
+	    }
+
+	     #categorias div p:hover{
+	    	
+	    	color: #959595;
+	    } 
+
+	    #subcategorias{    	
+	    	padding-top: 0.5em;
+	    	padding-bottom: 0.5em;
+	    	font-size: 22px;
+	    	margin-bottom: 1em;
+	    	border: solid 1px #D2D2D2;
+	    	
+	    	
+	    }
+
+	    #subcategorias div p{
+	    	color: #333;
+	    	cursor: pointer;
+
+	    }
+
+	    #subcategorias div p:hover{
+	    	color: #959595;
+	    	
+
+	    }
+
+	    	
+
+	   	 .barra-superior{
+	   	 	
+	   	 	padding-bottom: 1em;
+	   	 	padding-top: 1em;
+	   	 	
+	   	 	color: black !important;
+	   	 }
+
+	   	 .barra-inferior{
+	   	 	border-top:  1px solid #D2D2D2;
+	   	 	background-color: rgb(237, 237, 237);
+	   	 	padding-top: 1em;
+	   	 }
+
+	   	 .producto{
+	   	 	background-color: rgb(237, 237, 237);
+	   	 	
+	   	 	margin-bottom: 1em;
+	   	 	margin-left: 1em;
+	   	 }
+
+	   	 .footer-item{
+	   	 	
+	   	 	height: 120px;
+	   	 	border: 1px solid rgb(237, 237, 237);
+	   	 }
+
+	   	 .btn-comprar{
+	   	 	margin-left: 0.5em;
+	   	 }
+
+	    </style>
+
+
+	  </head>
+	  <body ng-app="app" ng-controller="startApp">
+	  
+		{% block contenido %}
+		{% endblock %}
+
+	  
+
+
+	   	<div class="row barra-inferior">
+	   		<div class="col-xs-12 col-md-3 col-lg-2 col-md-offset-2 col-lg-offset-2 footer-item ">
+	   			NEWSLETTER
+	   		</div>
+	   		<div class="col-xs-12 col-md-3 col-lg-2 footer-item ">
+	   			Suport
+	   		</div>
+	   		<div class="col-xs-12 col-md-3 col-lg-2 footer-item ">
+	   			Testimonio
+	   		</div>
+	   		<div class="col-xs-12 col-md-3 col-lg-2 footer-item ">
+	   			Redes sociales
+	   		</div>
+	   	</div>
+
+	   
+
+	    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	    <!-- Include all compiled plugins (below), or include individual files as needed -->
+	    <script src="{{ STATIC_URL }}assets/bootstrap/js/bootstrap.min.js"></script>
+	    <script type="text/javascript" src="{{ STATIC_URL }}assets/angular.js"></script>
+	    <script type="text/javascript" src="{{ STATIC_URL }}assets/aplicacion.js"></script>
+	    <script type="text/javascript" src="{{ STATIC_URL }}assets/services.js"></script>
+	    <script type="text/javascript" src="{{ STATIC_URL }}assets/tiendacontrollers.js"></script>
+
+	    <script type="text/javascript">
+	    	$( document ).ready(function() {
+			  // Handler for .ready() called.
+			  $(".no_link").click(function(){
+			  	return false;
+			  });
+			});
+				    </script>
+	    {% block scripts %}
+	    {% endblock %}
+
+
+	  </body>
+	</html>

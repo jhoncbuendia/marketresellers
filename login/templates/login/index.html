@@ -1,0 +1,39 @@
+{% extends 'layouts/default.html' %}
+
+{% block css %}
+	<style type="text/css">
+	.login{
+		margin-top: 5%;
+	}
+
+	.infografia{
+		border-radius: 5px;
+		padding-bottom: 2em;	
+	}
+
+	.fb-button{
+		background-color: rgb(59, 89, 152);
+		color: white !important;
+	}
+	</style>
+{% endblock %}
+
+{% block contenido %}
+	
+	<div class="row login">
+	  	<div class="col-xs-12 col-md-6 col-lg-6 col-md-offset-3 col-lg-offset-3 color-negro infografia bg-white">
+	  		<p><h1>Infografia</h1>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.
+
+Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.
+			</p>
+			<br>
+			<a  href="{% url 'social:begin' 'facebook' %}">
+			<div class="fb-button ">
+				<img src="{{ STATIC_URL }}assets/bootstrap/img/fb.png">INGRESAR
+			</div>
+			</a>
+	  	</div>
+	  
+  	</div>
+	 
+{% endblock %}

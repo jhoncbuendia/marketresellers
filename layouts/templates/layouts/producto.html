@@ -1,0 +1,41 @@
+{% extends 'layouts/index.html' %}
+
+{% block css %}
+<style type="text/css">
+	.detalle-producto{
+		
+		margin-bottom: 1em;
+	}
+
+	.info{
+		background-color: white;
+	}
+
+	.img-producto{
+		background-color: rgb(237, 237, 237);
+	}
+</style>
+{%endblock%}
+
+{%block carrusel %}
+{%endblock%}
+
+
+{%block producto%}
+	<div class="detalle-producto">
+		<div class="row">
+			<div class="col-xs-12 col-md-4 col-lg-4  img-producto">	
+				<img class="img-responsive"  src="http://wordpress.novarostudio.com/estella/wp-content/uploads/sites/14/2013/06/T_2_front-270x330.jpg">
+			</div>
+			<div class="col-xs-12 col-md-7 col-lg-7 info ">
+				<h1>Nombre </h1>
+				<h2>Precio</h2>
+				<hr>
+				<h3>Descripcion</h3>
+				<hr>
+				<button class="btn btn-comprar btn-primary col-xs-12 col-md-5 col-lg-5">Comprar</button> 
+	   							</div>
+			</div>
+		</div>
+	</div>
+{%endblock%}

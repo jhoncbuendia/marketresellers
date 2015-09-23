@@ -1,0 +1,36 @@
+{% extends 'layouts/default.html' %}
+
+{% block css %}
+<style type="text/css">
+	.contenido{
+		margin-top: 5em;
+		background-color: white;
+		padding-bottom: 3em;
+		
+	}
+
+	.vendedora{
+		color:rgb(245, 12, 92);
+	}
+</style>
+{% endblock %}
+
+{% block contenido %}
+	<div ng-controller="perfil">
+		<input type="hidden" id="vendedora" value="{{vendedora.id}}">
+		<input type="hidden" id="tienda" value="{{tienda.url}}">
+		<div class="row">
+			<div class="col-xs-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2 contenido">
+			<p><h3>Bienvenida a {{tienda.nombre}}, has llegado a nosotros gracias a {{vendedora.username}}, por favor dejanos tu email para continual y disfrutar de todos nuestros productos.</h3></p>
+				<div class="form-inline">
+  
+				  <div class="form-group">
+				    
+				    <input  type="email" class="form-control" id="correo" placeholder="jane.doe@example.com" size="40" >
+				  </div>
+				  <button type="submit" class="btn btn-primary" ng-click="go_tienda()">Continuar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

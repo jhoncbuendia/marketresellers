@@ -1,0 +1,327 @@
+{% extends 'layouts/default.html' %}
+
+{% block css %}
+	<style type="text/css">
+	.opciones{
+		margin-top: 2%;
+	}
+
+	.opcion{
+		
+		background-color:  rgb(245, 12, 92);
+		color: white;
+		padding-top: 1em;
+		padding-bottom: 1em;	
+		
+	}
+
+	.opcion:hover{
+		
+		background-color:  #337ab7;
+		color: white;
+		
+	}
+
+	.principal{
+		margin-top: 2%;
+	}
+
+	.perfil{
+
+		
+		padding-bottom: 2em;	
+	}
+
+	.mensaje-principal{
+		color: rgb(245, 12, 92);
+	}
+
+	.cursor{
+		cursor: pointer;
+	}
+
+	.separador{
+		margin-top: 1em;
+		height: 0.1em;
+		width: 100%;
+		background-color: rgb(245, 12, 92);
+	}
+
+	.tiendas{
+		display: none;
+	}
+
+	.ventas{
+		display: none;
+	}
+
+	.clientes{
+		display: none;
+	}
+	
+	</style>
+{% endblock %}
+
+{% block contenido %}
+<div ng-controller="perfil">
+	<input type="hidden" id="id_usuario" value="{{request.user.id}}">
+	<div class="row">
+		<div class="col-xs-12 col-md-2 col-lg-2 col-md-offset-1 col-lg-offset-1 color-negro  ">
+			<div class="row">
+				<div class="col-xs-12 col-md-12 col-lg-12 color-negro  ">
+					<h3 class="opcion cursor btn-facturacion"><p class="text-center">Facturacion</p><h3>
+				</div>
+				<div class="col-xs-12 col-md-12 col-lg-12 color-negro  ">
+					<h3 class="opcion cursor btn-tiendas" ng-click="btn_tiendas()"><p class="text-center">Tiendas</p><h3>
+				</div>
+				<div class="col-xs-12 col-md-12 col-lg-12 color-negro  ">
+					<h3 class="opcion cursor btn-clientes" ng-click="btn_clientes()"><p class="text-center">Clientes</p><h3>
+				</div>
+				<div class="col-xs-12 col-md-12 col-lg-12 color-negro  ">
+					<h3 class="opcion cursor btn-ventas"><p class="text-center">Ventas</p><h3>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-xs-12 col-md-7 col-lg-7 col-md-offset-1 col-lg-offset-1 color-negro  ">
+			<div class="row">
+				<div class="col-xs-12 col-md-12 col-lg-12 color-negro principal perfil bg-white facturacion">
+					<form>
+						<h3 class="mensaje-principal">Bienvenido {{usuario.username}}, Por favor completa su informacion.</h3>
+						
+						<h3>Su Facturacion</h3>
+					  <div class="form-group">
+					    <label for="exampleInputEmail1">Nombre del Titular de la Cuenta</label>
+					    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Ingrese el nombre del titular de la cuenta" ng-model="titular_cuenta">
+					  </div>
+					  <div class="form-group">
+					    <label for="exampleInputEmail1">Su Pais</label>
+					    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Ingrese Su Pais" ng-model="pais">
+					  </div>
+					  <div class="form-group">
+					    <label for="exampleInputEmail1">Su Ciudad</label>
+					    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Ingrese Su Ciudad" ng-model="ciudad">
+					  </div>
+					  <div class="form-group">
+					    <label for="exampleInputEmail1">Nombre del Banco</label>
+					    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Ingrese el Nombre del Banco" ng-model="banco">
+					  </div>
+
+					  <div class="form-group">
+					    <label for="exampleInputEmail1">Su Numero de Cuenta</label>
+					    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Ingrese Su Numero de Cuenta" ng-model="numero_cuenta">
+					  </div>
+
+					 
+					  <button type="submit" class="btn btn-success" ng-click="modificar_perfil()">Aceptar</button>
+					</form>
+				</div>
+
+
+				<div class="col-xs-12 col-md-12 col-lg-12 color-negro principal perfil bg-white tiendas">
+
+					<h3 class="mensaje-principal">Bienvenido {{usuario.username}}, Por favor completa su informacion.</h3>
+
+					<h3>Tiendas Disponibles</h3>
+
+					<table class="table table-striped">
+				      <thead>
+				        <tr>
+				          <th>#</th>
+				          <th>Tienda</th>
+				          <th>Incluir</th>
+				          
+				        </tr>
+				      </thead>
+				      <tbody>
+
+				     
+				      	<tr ng-repeat="t in tiendas">
+				          <th scope="row">[[t.id]]</th>
+				          <td>[[t.nombre]]</td>
+				          <td><button class="btn btn-success" ng-click="incluir_tienda(t.id)" type="submit">Incluir</button></td>
+				          
+				          
+				        </tr>
+				      
+				        
+				      </tbody>
+	   				 </table>
+	   				
+	   				 <div class="separador"></div>
+					<h3>Sus Tiendas Incluidas</h3>
+
+					<table class="table table-striped">
+				      <thead>
+				        <tr>
+				          
+				          <th># Tienda</th>
+				         <th>Excluir</th>
+				          
+				        </tr>
+				      </thead>
+				      <tbody>
+
+				     
+				      	<tr ng-repeat="t in tiendas_incluidas">
+				         
+				          <th scope="row">[[t]]</th>
+				          <td><button class="btn btn-danger" ng-click="excluir_tienda(t)" type="submit">Excluir</button></td>
+				         
+				          
+				        </tr>
+				      
+				        
+				      </tbody>
+	   				 </table>
+				  
+				   <button type="button" class="btn btn-primary" ng-click="generar_links()">Generar Links de Referido</button>
+
+				   <div class="separador"></div>
+					<h3>Links Generados</h3>
+
+					<table class="table table-striped">
+				      <thead>
+				        <tr>
+				          
+				          <th>Tienda</th>
+				          <th>Link</th>
+				         <th>Copiar</th>
+				          
+				        </tr>
+				      </thead>
+				      <tbody>
+
+				     
+				      	<tr ng-repeat="l in links">
+				         
+				          <th scope="row">[[l.nombre]]</th>
+				          <td>[[servidor]]/referido/[[id_usuario]]/[[l.id]]</td>
+				          <td><button class="btn btn-primary" ng-click="copiar_link()" >Copiar</button></td>
+				        </tr>
+				      
+				        
+				      </tbody>
+	   				 </table>
+
+				</div>
+
+				
+
+				<div class="col-xs-12 col-md-12 col-lg-12 color-negro principal perfil bg-white  ventas">
+
+			
+					<h3 class="mensaje-principal">Bienvenido {{usuario.username}}, Por favor completa su informacion.</h3>
+					<h3>Sus Ventas</h3>
+				  	<table class="table table-striped">
+				      <thead>
+				        <tr>
+				          <th>#</th>
+				          <th>Tienda</th>
+				          <th>Valor</th>
+				          <th>Cliente</th>
+				          <th>Pago</th>
+				          
+				        </tr>
+				      </thead>
+				      <tbody>
+				        <tr>
+				          <th scope="row">1</th>
+				          <td>yo amo los zapatos mexico</td>
+				          <th>500 MX</th>
+				          <th>Jhon Buendia</th>
+				          <th>Pendiente</th>
+				          
+				        </tr>
+				        <tr>
+				          <th scope="row">2</th>
+				          <td>yo amo los zapatos colombia</td>
+				          <th>500 MX</th>
+				          <th>Jhon Buendia</th>
+				          <th>Pendiente</th>
+				          
+				        </tr>
+				        
+				      </tbody>
+	   				 </table>
+				   
+
+
+				</div>
+			</div>
+
+			<div class="col-xs-12 col-md-12 col-lg-12 color-negro principal perfil bg-white clientes">
+
+			
+					<h3 class="mensaje-principal">Bienvenido {{usuario.username}}.</h3>
+					<h3>Sus Clintes</h3>
+				  	<table class="table table-striped">
+				      <thead>
+				        <tr>
+				          <th>#</th>
+				          <th>Correo</th>
+				          <th>Tienda</th>
+				          <th>Fecha</th>
+				          
+				          
+				        </tr>
+				      </thead>
+				      <tbody>
+				        <tr ng-repeat="c in clientes">
+				          <th scope="row">[[$index]]</th>
+				          <td>[[c.correo]]</td>
+				          <td>[[c.tienda]]</td>
+				          <td>[[c.fecha_creacion | date :  yyyy-MM-ddTHH:mm  ]]</td>
+				          
+				        </tr>
+				        
+				        
+				      </tbody>
+	   				 </table>
+				   
+
+
+				</div>
+
+
+
+
+
+		</div>
+
+	</div>
+
+	
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript">
+	$( document ).ready(function() {
+    $('.btn-facturacion').click(function(){
+    	$('.facturacion').css('display', 'block');
+    	$('.tiendas').css('display', 'none');
+    	$('.ventas').css('display', 'none');
+    	$('.clientes').css('display', 'none')
+    });
+    $('.btn-tiendas').click(function(){
+    	$('.facturacion').css('display', 'none');
+    	$('.tiendas').css('display', 'block');
+    	$('.ventas').css('display', 'none');
+    	$('.clientes').css('display', 'none')
+
+    });
+    $('.btn-ventas').click(function(){
+    	$('.facturacion').css('display', 'none');
+    	$('.tiendas').css('display', 'none');
+    	$('.ventas').css('display', 'block');
+    	$('.clientes').css('display', 'none')
+    });
+
+    $('.btn-clientes').click(function(){
+    	
+    });
+});	
+
+</script>
+
+    {% endblock %}
