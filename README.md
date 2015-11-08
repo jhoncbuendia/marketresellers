@@ -1,3 +1,4 @@
 # marketresellers
 
-## marketresellers is a reseller platform made in Django 
+## marketresellers is a reseller platform made in Django, AngularJS, Twitter Bootstrap.
+
